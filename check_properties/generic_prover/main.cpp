@@ -311,7 +311,17 @@ int main( int argc, char **argv )
         }
         printf( "\n\n" );
 
-        reluplex.initialize();
+        Reluplex::FinalStatus result = Reluplex::NOT_DONE;
+        try
+        {
+            reluplex.initialize();
+        }
+        catch (const InvariantViolationError &e) {
+            // Even if we haven't officially started solving, simply propagating
+            // the bounds on the inputs to give each variable finite bounds
+            // already detects that UNSAT
+            result = Reluplex::UNSAT;
+        }
 
         printf( "\nAfter tableau initialization, output ranges are:\n" );
         for ( unsigned i = 0; i < outputLayerSize ; ++i )
@@ -324,7 +334,10 @@ int main( int argc, char **argv )
         }
         printf( "\n\n" );
 
-        Reluplex::FinalStatus result = reluplex.solve();
+        if(result == Reluplex::NOT_DONE)
+        {
+            result = reluplex.solve();
+        }
         if ( result == Reluplex::SAT )
         {
             printf( "Solution found!\n\n" );
