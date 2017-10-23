@@ -248,11 +248,21 @@ public:
         }
     }
 
-    void initialize()
+    FinalStatus initialize()
     {
         initialUpdate();
-        makeAllBoundsFinite();
+        try
+        {
+            makeAllBoundsFinite();
+        }
+        catch (const InvariantViolationError &e) {
+            // Even if we haven't officially started solving, simply propagating
+            // the bounds on the inputs to give each variable finite bounds
+            // already detects that UNSAT
+            _finalStatus = Reluplex::UNSAT;
+        }
         _wasInitialized = true;
+        return _finalStatus;
     }
 
     FinalStatus solve()
