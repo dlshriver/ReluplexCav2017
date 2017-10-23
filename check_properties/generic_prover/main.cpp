@@ -242,7 +242,7 @@ int main( int argc, char **argv )
         reluplex.setUpperBound( it.second, 0.0 );
     }
 
-    // The property in question: output[0] is greater or equal to 1500
+    // The property in question: output[0] is lower or equal to 0
     int bound = 0;
     reluplex.setUpperBound( nodeToVars[Index(numLayersInUse - 1, 0, false)],
                             unnormalizeOutput( bound, neuralNetwork ) );
@@ -327,6 +327,8 @@ int main( int argc, char **argv )
         if(result == Reluplex::NOT_DONE)
         {
             result = reluplex.solve();
+        } else {
+            printf("Solved only using static analysis.\n");
         }
         if ( result == Reluplex::SAT )
         {
