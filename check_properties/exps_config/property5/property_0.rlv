@@ -1,0 +1,11 @@
+Assert <= 250 1.0 in_0
+Assert >= 400 1.0 in_0
+Assert <= 0.2 1.0 in_1
+Assert >= 0.4 1.0 in_1
+Assert <= -3.1415927 1.0 in_2
+Assert >= -3.1365927 1.0 in_2
+Assert <= 100 1.0 in_3
+Assert >= 400 1.0 in_3
+Assert <= 0.0 1.0 in_4
+Assert >= 400 1.0 in_4
+Assert <= 0.0 1.0 out_4 -1.0 out_0
