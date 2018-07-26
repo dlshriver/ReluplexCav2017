@@ -57,3 +57,18 @@ dkms.conf
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# glpk
+glpk-4.60/Makefile
+glpk-4.60/config.h
+glpk-4.60/config.log
+glpk-4.60/config.status
+glpk-4.60/examples/.deps/
+glpk-4.60/examples/Makefile
+glpk-4.60/examples/glpsol
+glpk-4.60/installed/
+glpk-4.60/libtool
+glpk-4.60/src/.deps/
+glpk-4.60/src/.libs/
+glpk-4.60/src/Makefile
+glpk-4.60/stamp-h1
