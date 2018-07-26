@@ -33,7 +33,7 @@
 static const double ALMOST_BROKEN_RELU_MARGIN = 0.001;
 static const double GLPK_IMPRECISION_TOLERANCE = 0.001;
 static const double NUMBERICAL_INSTABILITY_CONSTANT = 0.0001;
-static const double OOB_EPSILON = 0.001;
+static const double OOB_EPSILON = 0.000001;
 static const double MAX_ALLOWED_DEGRADATION = 0.000001;
 
 // How often should the statistics and assignment be printed
@@ -248,11 +248,21 @@ public:
         }
     }
 
-    void initialize()
+    FinalStatus initialize()
     {
         initialUpdate();
-        makeAllBoundsFinite();
+        try
+        {
+            makeAllBoundsFinite();
+        }
+        catch (const InvariantViolationError &e) {
+            // Even if we haven't officially started solving, simply propagating
+            // the bounds on the inputs to give each variable finite bounds
+            // already detects that UNSAT
+            _finalStatus = Reluplex::UNSAT;
+        }
         _wasInitialized = true;
+        return _finalStatus;
     }
 
     FinalStatus solve()

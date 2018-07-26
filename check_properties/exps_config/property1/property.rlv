@@ -1,0 +1,4 @@
+Assert <= 55947.691 1.0 in_0
+Assert <= 1145 1.0 in_3
+Assert >= 60 1.0 in_4
+Assert <= 1500 1.0 out_0

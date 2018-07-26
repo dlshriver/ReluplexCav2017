@@ -25,6 +25,8 @@ SUBDIRS = \
 	property10 \
 	\
 	adversarial \
+	\
+	generic_prover
 
 all:
 	rm -f bin/*
@@ -40,6 +42,7 @@ all:
 	cp property9/property9.elf bin
 	cp property10/property10.elf bin
 	cp adversarial/adversarial.elf bin
+	cp generic_prover/generic_prover.elf bin
 	@echo Done
 
 include $(ROOT_DIR)/Rules.mk
