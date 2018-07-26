@@ -29,7 +29,7 @@ NNet *load_network(const char* filename)
     }
 
     //Initialize variables
-    int bufferSize = 102400;
+    int bufferSize = 102400000;
     char *buffer = new char[bufferSize];
     char *record, *line;
     int i=0, layer=0, row=0, j=0, param=0;
