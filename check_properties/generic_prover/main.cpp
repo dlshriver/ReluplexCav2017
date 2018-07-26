@@ -18,7 +18,7 @@
 #include "AcasNeuralNetwork.h"
 #include "File.h"
 #include "Reluplex.h"
-#include "String.h"
+#include "MString.h"
 
 struct Index
 {
@@ -336,7 +336,7 @@ int main( int argc, char **argv )
             for ( unsigned i = 0; i < inputLayerSize; ++i )
             {
                 double assignment = reluplex.getAssignment( nodeToVars[Index(0, i, true)] );
-                printf( "input[%u] = %lf. Normalized: %lf.\n",
+                printf( "input[%u] = %.30g. Normalized: %.30g.\n",
                         i, unnormalizeInput( i, assignment, neuralNetwork ), assignment );
                 inputs.append( assignment );
             }
