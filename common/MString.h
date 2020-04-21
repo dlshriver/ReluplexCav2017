@@ -38,6 +38,8 @@ public:
 	{
 	}
 
+    String(const String&) = default;
+
 	unsigned length() const
 	{
 		return _super.length();

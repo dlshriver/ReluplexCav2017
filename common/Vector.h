@@ -35,6 +35,8 @@ public:
     {
     }
 
+    Vector<T>(const Vector<T>&) = default;
+
     virtual void append( T value )
     {
         _container.push_back( value );
